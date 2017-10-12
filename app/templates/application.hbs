@@ -1,5 +1,14 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
-
-{{outlet}}
+<div class="my-autocomplete">
+  {{#paper-autocomplete
+    options=items
+    allowClear=true
+    searchText=(readonly item)
+    onSearchTextChange=(action (mut item))
+    placeholder="click here to open selection..."
+    onSelectionChange=(action (mut item)) as |option autocomplete|}}
+    {{paper-autocomplete-highlight
+      label=option
+      searchText=autocomplete.searchText
+      flags="i"}}
+  {{/paper-autocomplete}}
+</div>
